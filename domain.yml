@@ -5,23 +5,42 @@ intents:
   - goodbye
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
   - bot_challenge
+  - guess
+
+entities:
+  - animal
+  - color
+  - legs
+  - body_parts
+  - behavior
+
+slots:
+  animal:
+    type: categorical
+    values:
+      - dog
+      - cat
+      - parrot
+      - snake
+      - tardigrade
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        value: random_animal
+        intent: greet
+  color:
+    type: text
+  legs:
+    type: text
+  body_parts:
+    type: text
+  behavior:
+    type: text
 
 responses:
   utter_greet:
   - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
 
   utter_goodbye:
   - text: "Bye"
@@ -30,7 +49,13 @@ responses:
   - text: "I am a bot, powered by Rasa."
 
   utter_try_to_guess:
-  - text: "Hi. Try to guess the animal I am thinking of."
+  - text: "Try to guess the animal I am thinking of."
+
+  utter_congratulations:
+  - text: "Congratulations, you guessed it correctly, it is an animal indeed."
+
+  utter_play_again:
+  - text: "Would you like to play again?"
 
 session_config:
   session_expiration_time: 60

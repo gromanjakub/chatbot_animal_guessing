@@ -25,3 +25,12 @@
 #         dispatcher.utter_message(text="Hello World!")
 #
 #         return []
+import random
+from typing import Any, Text, Dict, List
+from rasa_sdk import Action, Tracker
+from rasa_sdk.executor import CollectingDispatcher
+
+def choose_animal():
+    animal_list = ["cat", "dog", "snake", "parrot", "tardigrade"]
+    random_animal = random.choice(animal_list)
+    return random_animal
