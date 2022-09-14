@@ -1,28 +1,25 @@
-version: "3.1"
-
+version: '3.1'
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - bot_challenge
-  - ask_legs
-  - ask_color
-  - ask_bodyparts
-  - ask_behavior
-  - ask_animal
-  - mood_great
-  - mood_unhappy
-  - state_color
-  - state_animal
-
-
+- affirm
+- ask_animal
+- ask_behavior
+- ask_bodyparts
+- ask_color
+- ask_legs
+- bot_challenge
+- deny
+- goodbye
+- greet
+- mood_great
+- mood_unhappy
+- state_animal
+- state_color
 entities:
-  - color
-  - legs
-  - bodyparts
-  - behavior
-
+- behavior
+- bodyparts
+- color
+- legs
+- guessed_animal
 slots:
   color:
     type: text
@@ -30,7 +27,13 @@ slots:
     - type: from_entity
       entity: color
   animal:
-    type: text
+    type: categorical
+    values:
+    - cat
+    - dog
+    - parrot
+    - snake
+    - tardigrade
     mappings:
     - type: custom
       action: action_guessing
@@ -49,45 +52,42 @@ slots:
     mappings:
     - type: from_entity
       entity: behavior
-
+  guessed_animal:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: guessed_animal
 actions:
-  - action_guessing
-  - action_color_ask
-  - action_bodyparts_ask
-  - action_legs_ask
-  - action_behavior_ask
-  - action_animal_ask
+- action_animal_ask
+- action_behavior_ask
+- action_bodyparts_ask
+- action_color_ask
+- action_guessing
+- action_legs_ask
+- utter_startgame
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
-
+  - text: Hey! How are you?
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
   utter_did_that_help:
-  - text: "Did that help you?"
-
+  - text: Did that help you?
   utter_happy:
-  - text: "Great, carry on!"
-
+  - text: Great, carry on!
   utter_goodbye:
-  - text: "Bye"
-
+  - text: Bye
   utter_iamabot:
-  - text: "Does it matter?"
-
+  - text: Does it matter?
   utter_colorslot:
-  - text: "In the color slot there is the color {color}."
-
+  - text: In the color slot there is the color {color}.
   utter_animalname:
-  - text: "In the animal slot there is {animal}."
-
+  - text: In the animal slot there is {animal}.
   utter_startgame:
-  - text: "Hi! Try to guess the animal I am thinking of."
-
-
+  - text: Hi! Try to guess the animal I am thinking of.
+  utter_okguess:
+  - text: OK, try to guess!
 session_config:
   session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  carry_over_slots_to_new_session: false

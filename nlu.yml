@@ -1,5 +1,4 @@
 version: "3.1"
-
 nlu:
 - intent: greet
   examples: |
@@ -16,7 +15,8 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
+    - Hi
+    - Hello
 - intent: goodbye
   examples: |
     - cu
@@ -29,7 +29,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -38,7 +37,10 @@ nlu:
     - of course
     - that sounds good
     - correct
-
+    - ok
+    - okay
+    - sure
+    - why not
 - intent: deny
   examples: |
     - no
@@ -48,7 +50,6 @@ nlu:
     - don't like that
     - no way
     - not really
-
 - intent: mood_great
   examples: |
     - perfect
@@ -65,7 +66,6 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -82,14 +82,12 @@ nlu:
     - extremly sad
     - so saad
     - so sad
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
 - intent: ask_color
   examples: |
     - is it [brown](color)?
@@ -99,18 +97,18 @@ nlu:
     - is it [blue](color)?
     - is it [yellow](color)?
     - is it [grey](color)?
-
+    - Is it [grey](color)?
 - intent: state_color
   examples: |
     - tell me the color slot.
     - what's in the color slot
-
 - intent: state_animal
   examples: |
     - tell me the animal slot
     - what's in the animal slot
     - what is in the animal slot
-
+    - animal slot
+    - animal
 - intent: ask_legs
   examples: |
     - does it have [2](legs)?
@@ -122,14 +120,12 @@ nlu:
     - does it have [zero](legs)?
     - does it have [8](legs)?
     - does it have [eight](legs)?
-
 - intent: ask_bodyparts
   examples: |
     - does it have [a snout](bodyparts)?
     - does it have [wings](bodyparts)?
     - does it have [fur](bodyparts)?
     - does it have [fangs](bodyparts)?
-
 - intent: ask_behavior
   examples: |
     - does it [bark](behavior)?
@@ -137,3 +133,11 @@ nlu:
     - does it [hiss](behavior)?
     - does it [swim](behavior)?
     - does it [sing](behavior)?
+    - does it [hiss](behavior)?
+- intent: ask_animal
+  examples: |
+    - is it a [cat](guessed_animal)?
+    - is it a [dog](guessed_animal)?
+    - is it a [snake](guessed_animal)?
+    - is it a [parrot](guessed_animal)?
+    - is it a [tardigrade](guessed_animal)?

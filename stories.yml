@@ -2,74 +2,46 @@ version: "3.1"
 
 stories:
 
-#- story: happy path
-#  steps:
-#  - intent: greet
-#  - action: utter_greet
-#  - intent: mood_great
-#  - action: utter_happy
-
-#- story: sad path 1
-#  steps:
-#  - intent: greet
-#  - action: utter_greet
-#  - intent: mood_unhappy
-#  - action: utter_cheer_up
-#  - action: utter_did_that_help
-#  - intent: affirm
-#  - action: utter_happy
-
-#- story: sad path 2
-#  steps:
-#  - intent: greet
-#  - action: utter_greet
-#  - intent: mood_unhappy
-#  - action: utter_cheer_up
-#  - action: utter_did_that_help
-#  - intent: deny
-#  - action: utter_goodbye
-
-#- story: testpathcolor
-#  steps:
-#  - intent: greet
-#  - action: utter_greet
-#  - intent: state_color
-#  - action: utter_colorslot
-
-#- story: testpathanimal
-#  steps:
-#  - intent: greet
-#  - action: utter_greet
-#  - intent: state_animal
-#  - action: action_guessing
-#  - action: utter_animalname
-
 - story: startgame
   steps:
   - intent: greet
   - action: utter_startgame
   - action: action_guessing
+  - action: action_listen
+#  - checkpoint: animal_slot_set
 
-  #- slot_was_set:
-  #  - animal:
 - story: playinggame
   steps:
+#  - checkpoint: animal_slot_set
   - intent: ask_color
   - action: action_color_ask
+  - action: action_listen
   - intent: state_animal
   - action: utter_animalname
-  #- intent: ask_bodyparts
-  #- action: action_bodyparts_ask
-  #- intent: ask_behavior
-  #- action: action_behavior_ask
 
 - story: behavior
   steps:
+#  - checkpoint: animal_slot_set
   - intent: ask_behavior
   - action: action_behavior_ask
+  - action: action_listen
 
 - story: bodyparts
   steps:
+#  - checkpoint: animal_slot_set
   - intent: ask_bodyparts
   - action: action_bodyparts_ask
+  - action: action_listen
+
+- story: animalguessing
+  steps:
+  - intent: ask_animal
+  - action: action_animal_ask
+
+#- story: bgbgbg
+#  steps:
+#  - intent: ask_animal2
+#  - action: utter_animal2
+
+
 

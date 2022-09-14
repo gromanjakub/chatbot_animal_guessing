@@ -23,12 +23,35 @@ class ActionGuessing(Action):
            tracker: Tracker,
            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        random_animal_check = tracker.get_slot("animal")
+        if (random_animal_check not in ["cat", "dog", "snake", "parrot", "tardigrade"]):
+
+            animal_list = ["cat", "dog", "snake", "parrot", "tardigrade"]
+        
+            random_animal = random.choice(animal_list)
+            #print("vybiram random animal, je to "+ random_animal)
+        
+
+            return [SlotSet(key = "animal", value = random_animal)]
+        else:
+            pass
+"""
+class ActionSessionStart(Action):
+   
+    def name(self) -> Text:
+        return "action_session_start"
+ 
+    def run(self,
+           dispatcher: CollectingDispatcher,
+           tracker: Tracker,
+           domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
         animal_list = ["cat", "dog", "snake", "parrot", "tardigrade"]
         random_animal = random.choice(animal_list)
-        print(random_animal)
+        #print(random_animal)
 
-        return [SlotSet(key = "animal", value = random_animal)]
-
+        return [SlotSet(key = "animal2", value = random_animal)]
+"""
 class ActionColorAsk(Action):
    
     def name(self) -> Text:
@@ -47,6 +70,7 @@ class ActionColorAsk(Action):
 
         asked_color = tracker.get_slot("color") #color slot asked by the user
         random_animal = tracker.get_slot("animal")
+        
         dispatcher.utter_message(text=f"You asked if the animal is {asked_color}.")
 
         if asked_color in color_dict[random_animal]:
@@ -103,3 +127,25 @@ class ActionBehaviorAsk(Action):
             dispatcher.utter_message(text=f"And it is correct, the animal does {asked_behavior}.")
         else:
             dispatcher.utter_message(text=f"But it is not correct, the animal does {asked_behavior}.")
+
+class ActionAnimalAsk(Action):
+   
+    def name(self) -> Text:
+        return "action_animal_ask"
+ 
+    def run(self,
+           dispatcher: CollectingDispatcher,
+           tracker: Tracker,
+           domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+
+        animal_name = tracker.get_slot("animal")
+        guessed_animal_name = tracker.get_slot("guessed_animal")
+        dispatcher.utter_message(text=f"You asked if the animal is {guessed_animal_name}.")
+        
+        if guessed_animal_name == animal_name:
+            dispatcher.utter_message(text=f"Congratulations, you guessed it correctly, it is a {guessed_animal_name} indeed.")
+            dispatcher.utter_message(text=f"Say 'Hello' to play again.")
+            return [SlotSet(key = "animal", value = None)]
+        else:
+            dispatcher.utter_message(text=f"But it is not correct, the animal is not {guessed_animal_name}.")
