@@ -6,56 +6,87 @@ intents:
   - affirm
   - deny
   - bot_challenge
-  - guess
+  - ask_legs
+  - ask_color
+  - ask_bodyparts
+  - ask_behavior
+  - ask_animal
+  - mood_great
+  - mood_unhappy
+  - state_color
+  - state_animal
+
 
 entities:
-  - animal
   - color
   - legs
-  - body_parts
+  - bodyparts
   - behavior
 
 slots:
-  animal:
-    type: categorical
-    values:
-      - dog
-      - cat
-      - parrot
-      - snake
-      - tardigrade
-    influence_conversation: true
-    mappings:
-      - type: from_intent
-        value: random_animal
-        intent: greet
   color:
     type: text
+    mappings:
+    - type: from_entity
+      entity: color
+  animal:
+    type: text
+    mappings:
+    - type: custom
+      action: action_guessing
   legs:
     type: text
-  body_parts:
+    mappings:
+    - type: from_entity
+      entity: legs
+  bodyparts:
     type: text
+    mappings:
+    - type: from_entity
+      entity: bodyparts
   behavior:
     type: text
+    mappings:
+    - type: from_entity
+      entity: behavior
+
+actions:
+  - action_guessing
+  - action_color_ask
+  - action_bodyparts_ask
+  - action_legs_ask
+  - action_behavior_ask
+  - action_animal_ask
 
 responses:
   utter_greet:
   - text: "Hey! How are you?"
 
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
   utter_goodbye:
   - text: "Bye"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  - text: "Does it matter?"
 
-  utter_try_to_guess:
-  - text: "Try to guess the animal I am thinking of."
+  utter_colorslot:
+  - text: "In the color slot there is the color {color}."
 
-  utter_congratulations:
-  - text: "Congratulations, you guessed it correctly, it is an animal indeed."
+  utter_animalname:
+  - text: "In the animal slot there is {animal}."
 
-  utter_play_again:
-  - text: "Would you like to play again?"
+  utter_startgame:
+  - text: "Hi! Try to guess the animal I am thinking of."
+
 
 session_config:
   session_expiration_time: 60
