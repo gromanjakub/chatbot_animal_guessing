@@ -8,7 +8,7 @@ stories:
 #  - action: utter_greet
 #  - intent: mood_great
 #  - action: utter_happy
-#
+
 #- story: sad path 1
 #  steps:
 #  - intent: greet
@@ -18,7 +18,7 @@ stories:
 #  - action: utter_did_that_help
 #  - intent: affirm
 #  - action: utter_happy
-#
+
 #- story: sad path 2
 #  steps:
 #  - intent: greet
@@ -29,7 +29,47 @@ stories:
 #  - intent: deny
 #  - action: utter_goodbye
 
-- story: guess
+#- story: testpathcolor
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: state_color
+#  - action: utter_colorslot
+
+#- story: testpathanimal
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: state_animal
+#  - action: action_guessing
+#  - action: utter_animalname
+
+- story: startgame
   steps:
   - intent: greet
-  - action: utter_try_to_guess
+  - action: utter_startgame
+  - action: action_guessing
+
+  #- slot_was_set:
+  #  - animal:
+- story: playinggame
+  steps:
+  - intent: ask_color
+  - action: action_color_ask
+  - intent: state_animal
+  - action: utter_animalname
+  #- intent: ask_bodyparts
+  #- action: action_bodyparts_ask
+  #- intent: ask_behavior
+  #- action: action_behavior_ask
+
+- story: behavior
+  steps:
+  - intent: ask_behavior
+  - action: action_behavior_ask
+
+- story: bodyparts
+  steps:
+  - intent: ask_bodyparts
+  - action: action_bodyparts_ask
+

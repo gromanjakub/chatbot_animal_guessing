@@ -89,3 +89,51 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: ask_color
+  examples: |
+    - is it [brown](color)?
+    - is it [black](color)?
+    - is it [white](color)?
+    - is it [red](color)?
+    - is it [blue](color)?
+    - is it [yellow](color)?
+    - is it [grey](color)?
+
+- intent: state_color
+  examples: |
+    - tell me the color slot.
+    - what's in the color slot
+
+- intent: state_animal
+  examples: |
+    - tell me the animal slot
+    - what's in the animal slot
+    - what is in the animal slot
+
+- intent: ask_legs
+  examples: |
+    - does it have [2](legs)?
+    - does it have [two](legs)?
+    - does it have [4](legs)?
+    - does it have [four](legs)?
+    - does it have [0](legs)?
+    - does it have [no](legs)?
+    - does it have [zero](legs)?
+    - does it have [8](legs)?
+    - does it have [eight](legs)?
+
+- intent: ask_bodyparts
+  examples: |
+    - does it have [a snout](bodyparts)?
+    - does it have [wings](bodyparts)?
+    - does it have [fur](bodyparts)?
+    - does it have [fangs](bodyparts)?
+
+- intent: ask_behavior
+  examples: |
+    - does it [bark](behavior)?
+    - does it [meow](behavior)?
+    - does it [hiss](behavior)?
+    - does it [swim](behavior)?
+    - does it [sing](behavior)?
