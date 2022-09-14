@@ -11,6 +11,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
+from word2number import w2n
 import random
 
 class ActionGuessing(Action):
@@ -35,23 +36,7 @@ class ActionGuessing(Action):
             return [SlotSet(key = "animal", value = random_animal)]
         else:
             pass
-"""
-class ActionSessionStart(Action):
-   
-    def name(self) -> Text:
-        return "action_session_start"
- 
-    def run(self,
-           dispatcher: CollectingDispatcher,
-           tracker: Tracker,
-           domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        animal_list = ["cat", "dog", "snake", "parrot", "tardigrade"]
-        random_animal = random.choice(animal_list)
-        #print(random_animal)
-
-        return [SlotSet(key = "animal2", value = random_animal)]
-"""
 class ActionColorAsk(Action):
    
     def name(self) -> Text:
@@ -127,6 +112,43 @@ class ActionBehaviorAsk(Action):
             dispatcher.utter_message(text=f"And it is correct, the animal does {asked_behavior}.")
         else:
             dispatcher.utter_message(text=f"But it is not correct, the animal does {asked_behavior}.")
+
+class ActionLegsAsk(Action):
+   
+    def name(self) -> Text:
+        return "action_legs_ask"
+ 
+    def run(self,
+           dispatcher: CollectingDispatcher,
+           tracker: Tracker,
+           domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+
+
+        asked_legs = tracker.get_slot("legs") #color slot asked by the user
+        if type(asked_legs) != int:
+            asked_legs = w2n.word_to_num(asked_legs)
+        else:
+            pass
+        
+        legnum_dict = {"cat" : 4,
+                "dog" : 4,
+                "snake": 0,
+                "parrot": 2,
+                "tardigrade":8}
+
+        random_animal = tracker.get_slot("animal")
+
+        dispatcher.utter_message(text=f"You asked if the animal has {asked_legs} legs.")
+        
+        if asked_legs == legnum_dict[random_animal]:
+            dispatcher.utter_message(text=f"And it is correct, the animal does have {asked_legs} legs.")
+        else:
+            if asked_legs > legnum_dict[random_animal]:
+                dispatcher.utter_message(text=f"But it is not correct, the animal has less than {asked_legs} legs.")
+            else:
+                dispatcher.utter_message(text=f"But it is not correct, the animal has more than {asked_legs} legs.")
+
 
 class ActionAnimalAsk(Action):
    

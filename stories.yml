@@ -38,6 +38,11 @@ stories:
   - intent: ask_animal
   - action: action_animal_ask
 
+- story: asklegs
+  steps:
+  - intent: ask_legs
+  - action: action_legs_ask
+
 #- story: bgbgbg
 #  steps:
 #  - intent: ask_animal2
