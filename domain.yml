@@ -88,6 +88,8 @@ responses:
   - text: Hi! Try to guess the animal I am thinking of.
   utter_okguess:
   - text: OK, try to guess!
+  utter_default:
+  - text: Sorry, I do not understand that message. Try guessing the animal I am thinking of by asking about the color, number of legs, bodyparts or its behavior. You can do it!
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: false

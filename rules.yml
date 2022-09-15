@@ -12,4 +12,9 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
+- rule: try to rephrase
+  steps:
+  - intent: nlu_fallback
+  - action: utter_default
+
 

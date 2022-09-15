@@ -50,38 +50,6 @@ nlu:
     - don't like that
     - no way
     - not really
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
 - intent: bot_challenge
   examples: |
     - are you a bot?
@@ -97,7 +65,11 @@ nlu:
     - is it [blue](color)?
     - is it [yellow](color)?
     - is it [grey](color)?
-    - Is it [grey](color)?
+    - Is it [pink](color)?
+    - is it [orange](color)?
+    - is the animal [brown](color)?
+    - is the animal [black](color)?
+    - is the animal [white](color)?
 - intent: state_color
   examples: |
     - tell me the color slot.
@@ -107,8 +79,6 @@ nlu:
     - tell me the animal slot
     - what's in the animal slot
     - what is in the animal slot
-    - animal slot
-    - animal
 - intent: ask_legs
   examples: |
     - does it have [2](legs)?
@@ -120,6 +90,7 @@ nlu:
     - does it have [zero](legs)?
     - does it have [8](legs)?
     - does it have [eight](legs)?
+    - [how many](legs) does it have?
 - intent: ask_bodyparts
   examples: |
     - does it have [a snout](bodyparts)?
@@ -141,3 +112,4 @@ nlu:
     - is it a [snake](guessed_animal)?
     - is it a [parrot](guessed_animal)?
     - is it a [tardigrade](guessed_animal)?
+
